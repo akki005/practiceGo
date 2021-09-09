@@ -20,4 +20,9 @@ func main() {
 	a[0] = 10
 	fmt.Printf("after a=%v, c=%v\n", a, c)
 
+	//basic operations
+	fmt.Printf("before a=%v\n", a)
+	fmt.Printf("push 4 %v\n", append(a, 4))
+	fmt.Printf("pop %v\n", a[:])
+	fmt.Printf("dequeue %v\n", a[1:])
 }
