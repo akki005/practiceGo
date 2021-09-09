@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+	"strings"
+)
 
 //ref:
 //https://www.dotnetperls.com/substring-go
@@ -37,5 +41,13 @@ func main() {
 	fmt.Printf("rn[0]= %v\n", rn[0])             // this gives us utf-8 code
 	fmt.Printf("rn[0]= %v\n", string(rn[0]))     // this gives us actual string
 	fmt.Printf("rn[0:5]= %v\n", string(rn[0:5])) // to get substring
+	fmt.Println(rn[0] - 'A')
+	sort.Slice(rn, func(i, j int) bool { return rn[i] < rn[j] }) // i comes before j wise versa
+	fmt.Printf("sorted %v\n", string(rn))
 
+	//strings comparision
+	a := "hello"
+	c := "Hello"
+	fmt.Printf("%s==%s %v\n", a, c, strings.Compare(a, c) == 0)
+	fmt.Printf("%s==%s %v case insensitive\n", a, c, strings.EqualFold(a, c))
 }
