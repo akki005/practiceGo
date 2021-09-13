@@ -12,6 +12,9 @@ func main() {
 	b = append(b, a)
 	a[0] = 5
 	fmt.Printf("after a=%v, b=%v\n", a, b)
+	//swap elements
+	a[0], a[1] = a[1], a[0]
+	fmt.Printf("swap 0&1 =%v\n", a)
 
 	//solution. copy slices
 	c := make([]int, len(a))
@@ -22,7 +25,11 @@ func main() {
 
 	//basic operations
 	fmt.Printf("before a=%v\n", a)
-	fmt.Printf("push 4 %v\n", append(a, 4))
-	fmt.Printf("pop %v\n", a[:])
-	fmt.Printf("dequeue %v\n", a[1:])
+	a = append(a, 4)
+	fmt.Printf("push 4 %v\n", a)
+	a = a[:len(a)-1]
+	fmt.Printf("pop %v\n", a)
+	a = a[1:]
+	fmt.Printf("dequeue %v\n", a)
+
 }
