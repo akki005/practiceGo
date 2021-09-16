@@ -32,4 +32,20 @@ func main() {
 	a = a[1:]
 	fmt.Printf("dequeue %v\n", a)
 
+	//insert at index
+	x := []int{1, 2, 4, 5}
+	pos := 2
+	value := 3
+	x = insertElementAtIndex(x, pos, value)
+	fmt.Printf("x=%v", x)
+
+}
+
+func insertElementAtIndex(a []int, index int, value int) []int {
+	if len(a) == index { // nil or empty slice or after last element
+		return append(a, value)
+	}
+	a = append(a[:index+1], a[index:]...) // index < len(a)
+	a[index] = value
+	return a
 }
