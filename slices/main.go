@@ -46,6 +46,8 @@ func insertElementAtIndex(a []int, index int, value int) []int {
 		return append(a, value)
 	}
 	a = append(a[:index+1], a[index:]...) // index < len(a)
+	//a=[1,2,4,4,5]
 	a[index] = value
+	//a=[1,2,3,4,5]
 	return a
 }

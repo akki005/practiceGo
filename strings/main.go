@@ -44,6 +44,7 @@ func main() {
 	fmt.Println(rn[0] - 'A')
 	sort.Slice(rn, func(i, j int) bool { return rn[i] < rn[j] }) // i comes before j wise versa
 	fmt.Printf("sorted %v\n", string(rn))
+	fmt.Printf("length len(rn)=%v\n", len(rn))
 
 	//byte
 	// byte represents only ASCII character set. it doesn't include all UTF-8 character set which is represented by rune
@@ -60,5 +61,9 @@ func main() {
 	c := "Hello"
 	fmt.Printf("%s==%s %v\n", a, c, strings.Compare(a, c) == 0)
 	fmt.Printf("%s==%s %v case insensitive\n", a, c, strings.EqualFold(a, c))
+
+	str := ""
+	splittedStr := strings.Split(str, ":")
+	fmt.Println("splittedStr", splittedStr, len(splittedStr))
 
 }
