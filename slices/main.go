@@ -31,6 +31,7 @@ func main() {
 	fmt.Printf("pop %v\n", a)
 	a = a[1:]
 	fmt.Printf("dequeue %v\n", a)
+	fmt.Printf("add 100 to front %v\n", append([]int{100}, a...))
 
 	//insert at index
 	x := []int{1, 2, 4, 5}
