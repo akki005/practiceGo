@@ -12,4 +12,6 @@ func main() {
 	fmt.Println("x << 1", strconv.FormatInt(x, 2), x)
 	x = x << 1
 	fmt.Println("x << 1", strconv.FormatInt(x, 2), x)
+	fmt.Println("x << 1", 0^4^1^2^1^2)
+	fmt.Println("x << 1", 0^2^2^1)
 }

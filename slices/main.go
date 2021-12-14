@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
 
@@ -38,7 +41,35 @@ func main() {
 	pos := 2
 	value := 3
 	x = insertElementAtIndex(x, pos, value)
-	fmt.Printf("x=%v", x)
+	fmt.Printf("x=%v\n", x)
+
+	nums1 := []int{1, 2, 3}
+	nums2 := []int{4, 5, 6}
+	nums1 = nums2
+	nums1[0] = 100
+	fmt.Println(nums1, nums2)
+
+	/**
+	Important
+	*/
+	// 	Pop from queue
+
+	// x, a = a[0], a[1:]
+
+	// Pop from stack
+
+	// x, a = a[len(a)-1], a[:len(a)-1]
+	// Push
+
+	// a = append(a, x)
+
+	sort.Slice(nums1, func(i, j int) bool {
+		fmt.Println(nums1[i], nums1[j], nums1[i] < nums1[j], nums1)
+		//during iteration i points to next value and j points to current value
+		//swap i and j if nums[i]<nums[j]
+		//final state if nums[i] current number will be less than next number nums[j]
+		return nums1[i] < nums1[j]
+	})
 
 }
 

@@ -6,21 +6,10 @@ import (
 )
 
 func main() {
+	//continuously ticking timer ever 2 seconds
 	ticker := time.NewTicker(2 * time.Second)
-	done := make(chan bool)
 
-	go func() {
-		for {
-			select {
-			case <-done:
-				return
-			case t := <-ticker.C:
-				fmt.Println("tick at", t)
-			}
-		}
-	}()
-
-	time.Sleep(10000 * time.Millisecond)
-	ticker.Stop()
-	done <- true
+	for tick := range ticker.C {
+		fmt.Println("Tick at", tick)
+	}
 }

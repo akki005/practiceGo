@@ -65,5 +65,17 @@ func main() {
 	str := ""
 	splittedStr := strings.Split(str, ":")
 	fmt.Println("splittedStr", splittedStr, len(splittedStr))
+	str += "concat"
+	fmt.Println(str)
 
+	str2 := &str
+	fmt.Println(str2)
+	x := str2
+	fmt.Println(x)
+	str3 := "accd"
+	str2 = &str3
+	fmt.Println(x)
+	fmt.Println(str2)
+
+	fmt.Println('*' == 42)
 }
