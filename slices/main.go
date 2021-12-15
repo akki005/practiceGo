@@ -71,6 +71,9 @@ func main() {
 		return nums1[i] < nums1[j]
 	})
 
+	fmt.Println("are same? [3]int{1, 2, 3} == [3]int{1, 2, 3}", [3]int{1, 2, 3} == [3]int{1, 2, 3})
+	fmt.Println("are same? [3]int{1, 2, 3} == [3]int{1, 2, 4}", [3]int{1, 2, 3} == [3]int{1, 2, 4})
+
 }
 
 func insertElementAtIndex(a []int, index int, value int) []int {
