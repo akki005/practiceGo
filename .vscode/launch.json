@@ -16,7 +16,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "${workspaceFolder}/goroutine/main.go"
+            "program": "${workspaceFolder}/goroutine/rateLimit/main.go"
         }
     ]
 }

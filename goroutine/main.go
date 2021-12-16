@@ -60,55 +60,31 @@ func SumOfSquares(c, quit chan int) {
 
 func main() {
 
-	// mychannel := make(chan int)
+	mychannel := make(chan int)
 
-	// quitchannel := make(chan int)
+	quitchannel := make(chan int)
 
-	// sum := 0
+	sum := 0
 
-	// go func() {
-	// 	for i := 0; i < 5; i++ {
-	// 		sum += <-mychannel
-	// 	}
-	// 	fmt.Println(sum)
-	// 	quitchannel <- 1
-	// }()
-	// SumOfSquares(mychannel, quitchannel)
+	go func() {
+		for i := 0; i < 5; i++ {
+			sum += <-mychannel
+		}
+		fmt.Println(sum)
+		quitchannel <- 1
+	}()
+	SumOfSquares(mychannel, quitchannel)
 
-	// treeCh := make(chan int)
+	fmt.Println("done sum of squares")
 
-	// go Walk(tree.New(1), treeCh)
+	treeCh := make(chan int)
 
-	// for t := range treeCh {
-	// fmt.Println(t)
-	// }
+	go Walk(tree.New(1), treeCh)
+
+	for t := range treeCh {
+		fmt.Println(t)
+	}
 
 	fmt.Println(Same(tree.New(1), tree.New(2)))
 
 }
-
-// func f() {
-// 	defer func() {
-// 		if r := recover(); r != nil {
-// 			fmt.Println("Recovered in main", r)
-// 		}
-// 	}()
-// 	fmt.Println("Calling g.")
-// 	g(0)
-// 	fmt.Println("Returned normally from g.")
-// }
-
-// type PanicError struct {
-// 	Message string
-// 	Stack   string
-// }
-
-// func g(i int) {
-// 	if i > 3 {
-// 		fmt.Println("Panicking!")
-// 		panic(PanicError{Message: "panicked", Stack: string(debug.Stack())})
-// 	}
-// 	defer fmt.Println("Defer in g", i)
-// 	fmt.Println("Printing in g", i)
-// 	g(i + 1)
-// }
