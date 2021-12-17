@@ -8,6 +8,7 @@ import (
 func main() {
 
 	done := make(chan bool)
+	defer close(done)
 
 	go func() {
 		//sequential
@@ -35,7 +36,7 @@ func producer() chan int {
 	go func() {
 		defer close(result)
 		for i := 0; i <= 5; i++ {
-			time.Sleep(2 * time.Second)
+			task()
 			result <- i
 		}
 	}()
