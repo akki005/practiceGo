@@ -12,4 +12,8 @@ func main() {
 	a := 1
 	defer fmt.Println("a at defer:", a)
 	a = 2
+
+	for i := 0; i < 5; i++ {
+		defer fmt.Println("in loop", i)
+	}
 }

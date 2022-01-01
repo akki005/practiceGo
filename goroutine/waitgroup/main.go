@@ -3,22 +3,23 @@ package main
 import (
 	"log"
 	"sync"
-	"time"
 )
 
 func main() {
 	wg := sync.WaitGroup{}
-
-	for i := 1; i < 5; i++ {
-		wg.Add(1)
-		go task(&wg, i)
-	}
-
+	startWorkers(5, &wg)
 	wg.Wait()
+
 }
 
-func task(wg *sync.WaitGroup, taskId int) {
-	time.Sleep(2 * time.Second)
-	log.Printf("task %d is done", taskId)
-	wg.Done()
+func startWorkers(n int, wg *sync.WaitGroup) {
+
+	for i := 0; i < n; i++ {
+		wg.Add(1)
+		go func(i int) {
+			log.Println("i am worker ", i)
+			wg.Done()
+		}(i)
+	}
+
 }

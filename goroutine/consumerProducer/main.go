@@ -30,7 +30,7 @@ func main() {
 	}
 }
 
-func producer() chan int {
+func producer() <-chan int {
 	result := make(chan int)
 
 	go func() {
@@ -45,7 +45,7 @@ func producer() chan int {
 
 }
 
-func consumer(intCh chan int) {
+func consumer(intCh <-chan int) {
 	for number := range intCh {
 		fmt.Println("seq", number)
 	}

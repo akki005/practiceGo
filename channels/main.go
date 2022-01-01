@@ -8,6 +8,17 @@ import (
 func main() {
 	// basicChannels()
 	bufferedChannels()
+	ch := make(chan string, 2)
+
+	//send only channel
+	var sendOnly chan<- string = ch
+	sendOnly <- "akash"
+	sendOnly <- "patel"
+
+	//receive only channel
+	var receiveOnly <-chan string = ch
+	fmt.Println(<-receiveOnly)
+	fmt.Println(<-receiveOnly)
 }
 
 func bufferedChannels() {

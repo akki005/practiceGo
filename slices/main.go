@@ -74,6 +74,18 @@ func main() {
 	fmt.Println("are same? [3]int{1, 2, 3} == [3]int{1, 2, 3}", [3]int{1, 2, 3} == [3]int{1, 2, 3})
 	fmt.Println("are same? [3]int{1, 2, 3} == [3]int{1, 2, 4}", [3]int{1, 2, 3} == [3]int{1, 2, 4})
 
+	//slice capacity
+	//The length of a slice is the number of elements it contains.
+	//The capacity of a slice is the number of elements in the underlying array, counting from the first element in the slice.
+
+	//https://go.dev/tour/moretypes/11
+
+	sl := make([]int, 0, 5)
+	printSlice("sl", sl)
+	sl = sl[:2] //changes length only as we are droping item from end
+	printSlice("sl", sl)
+	sl = sl[1:] //changes length and capacity as we are dropping item from start
+	printSlice("sl", sl)
 }
 
 func insertElementAtIndex(a []int, index int, value int) []int {
@@ -85,4 +97,9 @@ func insertElementAtIndex(a []int, index int, value int) []int {
 	a[index] = value
 	//a=[1,2,3,4,5]
 	return a
+}
+
+func printSlice(s string, x []int) {
+	fmt.Printf("%s len=%d cap=%d %v\n",
+		s, len(x), cap(x), x)
 }

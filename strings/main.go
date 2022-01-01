@@ -6,6 +6,9 @@ import (
 	"strings"
 )
 
+//1 byte = 8bit = 1 ASCII character
+// as there are more character in 'utf-8' than ascii we need to use `rune`
+
 //ref:
 //https://www.dotnetperls.com/substring-go
 
@@ -29,8 +32,10 @@ func main() {
 	fmt.Printf("value=%v, Type=%T\n", r, r)
 
 	//following will print UTF-8 code instead of 'A'
-	fmt.Println('A')
-	fmt.Println('A' + 20)
+	fmt.Println("A", 'A')
+	A20 := 'A' + 20
+	fmt.Printf("'A'+20=%d,%T\n", A20, A20)
+	fmt.Printf("20th char 'A'+20=%c\n", A20)
 	fmt.Printf("65=%c\n", 65)
 	fmt.Printf("65=%d\n", 65)
 	fmt.Printf("65=%X\n", 65) // exadecimal format
@@ -78,4 +83,9 @@ func main() {
 	fmt.Println(str2)
 
 	fmt.Println('*' == 42)
+
+	//change value at index
+	strByte := []byte("abcd")
+	strByte[0] = 'a'
+	fmt.Println(string(strByte))
 }
