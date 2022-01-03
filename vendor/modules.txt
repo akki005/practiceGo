@@ -1,3 +1,6 @@
+# github.com/google/uuid v1.3.0
+## explicit
+github.com/google/uuid
 # golang.org/x/tour v0.1.0
 ## explicit
 golang.org/x/tour/tree

@@ -21,6 +21,6 @@ func main() {
 }
 
 func task(ctx context.Context) {
-	time.Sleep(1 * time.Second)
+	time.Sleep(5 * time.Second)
 	fmt.Println("finished task")
 }
