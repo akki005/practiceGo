@@ -64,7 +64,7 @@ func main() {
 	// a = append(a, x)
 
 	sort.Slice(nums1, func(i, j int) bool {
-		fmt.Println(nums1[i], nums1[j], nums1[i] < nums1[j], nums1)
+		fmt.Println(nums1, nums1[i], nums1[j], nums1[i] < nums1[j], nums1)
 		//during iteration i points to next value and j points to current value
 		//swap i and j if nums[i]<nums[j]
 		//final state if nums[i] current number will be less than next number nums[j]
