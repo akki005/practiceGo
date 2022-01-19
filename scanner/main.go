@@ -2,16 +2,18 @@ package main
 
 import (
 	"bufio"
-	"fmt"
+	"log"
 	"os"
+	"strings"
 )
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for scanner.Scan() {
-		fmt.Println(scanner.Text())
-
+		text := scanner.Text()
+		words := strings.Split(text, " ")
+		log.Println(words)
 	}
 
 }
