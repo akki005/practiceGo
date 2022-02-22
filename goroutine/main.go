@@ -44,37 +44,59 @@ func Same(t1, t2 *tree.Tree) bool {
 	return true
 }
 
-func SumOfSquares(c, quit chan int) {
-	count := 1
-	// your code here
-	for {
-		select {
-		case c <- count * count:
-			count++
-		case <-quit:
-			return
-		}
-	}
+func SquaresProducer(done <-chan bool) chan int {
 
+	outCh := make(chan int)
+
+	go func() {
+		defer close(outCh)
+		count := 1
+		// your code here
+		for {
+			select {
+			case outCh <- count * count:
+				count++
+			case <-done:
+				return
+			}
+		}
+	}()
+
+	return outCh
+}
+
+func SumCalculator(doneCh chan<- bool, squaresChannel <-chan int) chan int {
+
+	outCh := make(chan int)
+
+	go func() {
+		defer close(outCh)
+		sum := 0
+		// your code here
+		for i := 1; i <= 10; i++ {
+			sum += <-squaresChannel
+		}
+		doneCh <- true
+		outCh <- sum
+	}()
+
+	return outCh
+}
+
+func SumOfSquaresNew() {
+	doneCh := make(chan bool)
+	sum := SumCalculator(doneCh, SquaresProducer(doneCh))
+	for val := range sum {
+		fmt.Println(val)
+	}
 }
 
 func main() {
+	SumOfSquaresNew()
+	SameTreeWalker()
+}
 
-	mychannel := make(chan int)
-
-	quitchannel := make(chan int)
-
-	sum := 0
-
-	go func() {
-		for i := 0; i < 5; i++ {
-			sum += <-mychannel
-		}
-		fmt.Println(sum)
-		quitchannel <- 1
-	}()
-	SumOfSquares(mychannel, quitchannel)
-
+func SameTreeWalker() {
 	fmt.Println("done sum of squares")
 
 	treeCh := make(chan int)
@@ -86,5 +108,4 @@ func main() {
 	}
 
 	fmt.Println(Same(tree.New(1), tree.New(2)))
-
 }

@@ -107,7 +107,7 @@ func fanInFinders(done <-chan bool, numChs ...<-chan int) <-chan int {
 }
 
 func main() {
-	runtime.GOMAXPROCS(2)
+	// runtime.GOMAXPROCS(2)
 	//this is fan out at we are fanning out prime finding process as it it time consuming
 	fanInFanOutPrimeFinder()
 	// pipelinePrimeFinder()
@@ -124,7 +124,7 @@ func fanInFanOutPrimeFinder() {
 	finders := make([]<-chan int, numOfPrimeFinders)
 
 	for i := 0; i < len(finders); i++ {
-		finders[i] = primeProducer(closeCh, randIntGenerator(closeCh, 500000000))
+		finders[i] = primeProducer(closeCh, randIntGenerator(closeCh, 200))
 	}
 
 	for num := range taker(closeCh, fanInFinders(closeCh, finders...)) {

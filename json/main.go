@@ -9,9 +9,44 @@ import (
 	"strings"
 )
 
+type ResponseSub1 struct {
+	Name string
+}
+
+type ResponseSub2 map[string]interface{}
+
+type Response struct {
+	ResponseSub1
+	ResponseSub2 `json:",inline"`
+}
+
+func testResponse() {
+
+	res1 := ResponseSub1{
+		Name: "Akash",
+	}
+
+	res2 := ResponseSub2{}
+	res2["Age"] = 20
+
+	res := Response{
+		res1,
+		res2,
+	}
+
+	bs, err := json.Marshal(res)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("marshalled", string(bs))
+}
+
 func main() {
-	encodeDecode()
-	marshalUnmarshal()
+	testResponse()
+	// encodeDecode()
+	// marshalUnmarshal()
 }
 
 type person struct {

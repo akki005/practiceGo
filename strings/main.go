@@ -88,4 +88,15 @@ func main() {
 	strByte := []byte("abcd")
 	strByte[0] = 'a'
 	fmt.Println(string(strByte))
+
+	forTestStr := "abcd"
+
+	for i := 0; i < len(forTestStr); i++ {
+		char := forTestStr[i]
+		fmt.Println("for i", char-'a')
+	}
+
+	for _, char := range forTestStr {
+		fmt.Println("for range", char-'a')
+	}
 }
