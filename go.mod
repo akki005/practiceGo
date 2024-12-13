@@ -1,8 +1,8 @@
 module github.com/akki005/practiceGo
 
-go 1.16
+go 1.23
 
 require (
-	github.com/google/uuid v1.3.0
+	github.com/google/uuid v1.6.0
 	golang.org/x/tour v0.1.0
 )

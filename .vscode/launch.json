@@ -38,6 +38,13 @@
             "request": "launch",
             "mode": "auto",
             "program": "${workspaceFolder}/http/main.go"
+        },
+        {
+            "name": "encoding",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/encoding/main.go"
         }
     ]
 }
